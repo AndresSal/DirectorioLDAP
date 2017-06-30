@@ -23,7 +23,7 @@ public class LogIn {
     public void Conectar(String nombre, String password)
     {
         conn = MysqlConnect.ConnectDB();
-        String script = "SELECT * FROM base_CD WHERE nombrePersona='andres' and password='andres';";
+        String script = "SELECT * FROM base_CD WHERE nombrePersona='"+nombre+"' and password='"+password+"'";
         try
         {
             
