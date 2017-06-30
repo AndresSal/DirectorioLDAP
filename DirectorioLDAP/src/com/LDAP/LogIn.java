@@ -14,14 +14,18 @@ import java.sql.ResultSet;
  * @author andres
  */
 public class LogIn {
-    
+
     Connection conn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
     
-    
-    public void Conectar(String nombre, String password)
+            
+    public LogIn() {
+    }
+        
+    public boolean Conectar(String nombre, String password)
     {
+        boolean admitido=true;
         conn = MysqlConnect.ConnectDB();
         String script = "SELECT * FROM base_CD WHERE nombrePersona='"+nombre+"' and password='"+password+"'";
         try
@@ -36,12 +40,15 @@ public class LogIn {
             else
             {
                 System.out.println("Usuario no admitido.");
+                admitido=false;
             }
             
         }catch(Exception e)
         {
             System.out.println(e);
         }
+        
+        return admitido;
     }
     
     
